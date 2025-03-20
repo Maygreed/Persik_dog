@@ -3,111 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Программист 90-х</title>
+    <title>Пристройство собаки | Персик ищет дом</title>
+    <meta name="description" content="Помогите найти дом для Персика - молодой, здоровой собаки, которая ищет свою семью">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
-    <div class="stars"></div>
-    <div class="twinkling"></div>
-    
-    <header class="animate__animated animate__backInDown">
-        <div class="marquee">
-            <marquee scrollamount="3">Профессиональный разработчик C++, C# и Web! * Создаю крутые приложения и сайты! * Добро пожаловать на мою страницу!</marquee>
-        </div>
-        <h1><span class="blink">Мастер</span> Программирования</h1>
-        <img src="https://i.gifer.com/origin/d4/d454b6f9d4677b416f2819e599224747_w200.gif" alt="Компьютер" class="computer-gif">
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__logo">Персик</div>
+            <ul class="nav__list">
+                <li><a href="#about">О собаке</a></li>
+                <li><a href="#history">История</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav class="animate__animated animate__slideInLeft">
-        <ul>
-            <li><a href="#about">Обо мне</a></li>
-            <li><a href="#skills">Навыки</a></li>
-            <li><a href="#projects">Проекты</a></li>
-            <li><a href="#contact">Контакты</a></li>
-        </ul>
-    </nav>
-
     <main>
-        <section id="about" class="card">
-            <h2>Кто я?</h2>
-            <div class="about-content">
-                <img src="https://gifdb.com/images/high/coding-function-repeat-eat-sleep-7zxwkk9e1elyqls5.gif" alt="Программист" class="profile-gif">
-                <p>Привет! Я опытный разработчик с глубокими знаниями C++, C# и веб-технологий. Создаю надежные, быстрые и красивые приложения. Мой опыт охватывает разработку настольных приложений, серверных систем и современных веб-сайтов.</p>
+        <section class="hero">
+            <div class="hero__content">
+                <h1>Помогите найти дом для Персика</h1>
+                <p>Молодая, здоровая собака ищет свою семью</p>
+                <a href="#contact" class="btn">Связаться с нами</a>
             </div>
         </section>
 
-        <section id="skills" class="card">
-            <h2>Мои навыки</h2>
-            <div class="skills-container">
-                <div class="skill">
-                    <h3>C++</h3>
-                    <div class="skill-meter"><div class="skill-progress" style="width: 95%"></div></div>
-                    <p>Разработка высокопроизводительных приложений, игровых движков и системного ПО</p>
-                </div>
-                <div class="skill">
-                    <h3>C#</h3>
-                    <div class="skill-meter"><div class="skill-progress" style="width: 90%"></div></div>
-                    <p>Создание десктопных приложений, серверной логики и Unity-игр</p>
-                </div>
-                <div class="skill">
-                    <h3>Веб-разработка</h3>
-                    <div class="skill-meter"><div class="skill-progress" style="width: 85%"></div></div>
-                    <p>HTML5, CSS3, JavaScript, React, Angular и многое другое</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="card">
-            <h2>Проекты</h2>
-            <div class="projects-grid">
-                <div class="project">
-                    <h3>Симулятор Физики</h3>
-                    <p>Разработан на C++ с использованием OpenGL</p>
-                </div>
-                <div class="project">
-                    <h3>Финансовое приложение</h3>
-                    <p>Создано на C# с WPF и Entity Framework</p>
-                </div>
-                <div class="project">
-                    <h3>Интерактивный сайт</h3>
-                    <p>HTML, CSS, JavaScript с современными анимациями</p>
+        <section id="about" class="about">
+            <div class="container">
+                <h2>О собаке</h2>
+                <div class="about__content">
+                    <div class="about__image">
+                        <img src="images/dog.jpg" alt="Персик">
+                    </div>
+                    <div class="about__info">
+                        <h3>Персик</h3>
+                        <ul>
+                            <li>Возраст: 10 месяцев</li>
+                            <li>Вес: 30 кг</li>
+                            <li>Здоров: привит, есть ветеринарный паспорт</li>
+                            <li>Характер: дружелюбный, активный, хорошо ладит с людьми и животными, детьми</li>
+                            <li>Повадки: активный и игривый пёс, станет отличным компаньоном в любых путешествиях, не боится транспорта</li>
+                            <li>Режим: гуляет 3 раза в день, ест 2 раза в день сухой корм Royal Canin maxi puppy</li>
+                            <li>Активность: любит играть и тренироваться на собачьей площадке с барьерами</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="card">
-            <h2 class="blink">Напишите мне!</h2>
-            <div class="contact-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Имя:</label>
-                        <input type="text" id="name" name="name">
+        <section id="history" class="history">
+            <div class="container">
+                <h2>История</h2>
+                <div class="history__content">
+                    <div class="history__text">
+                        <p>9 июля 2024 года в Мытищах произошло ужасное событие - из движущейся машины выбросили щенка. К счастью, мы нашли его и забрали к себе. Сейчас Персик полностью здоров, привит и готов к новой жизни.</p>
+                        <p>С лета 2024 года мы ищем для Персика новый дом или частный приют с выгулом, где он сможет жить в любви и заботе. Если у вас есть возможность помочь - свяжитесь со мной, пожалуйста! Возможности оставить собаку на долгое проживание в квартире - нет!</p>
+                        <p>В конце марта Персик будет кастрирован, и будет на 100% готов к пристройству. Если вы искали себе верного, здорового и весёлого друга - вы его уже нашли. Персик великолепно сопровождает людей в любых путешествиях разной дальности, не боится машины и электрички. Здоровый и активный пёс станет отличным охранником участка, любимцем семьи или верным помощником на охоте и рыбалке. Все подробности по телефону или в мессенджере.</p>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email">
+                    <div class="history__gallery">
+                        <img src="images/IMG20240323130858.jpg" alt="Персик фото 1">
+                        <img src="images/IMG20240323130910.jpg" alt="Персик фото 2">
+                        <img src="images/IMG20240323130927.jpg" alt="Персик фото 3">
+                        <img src="images/20240313_111300.jpg" alt="Персик фото 4">
+                        <img src="images/3t.jpg" alt="Персик фото 5">
+                        <img src="images/4.jpg" alt="Персик фото 6">
+                        <img src="images/4-goda-1.jpg" alt="Персик фото 7">
+                        <img src="images/DwExp-rE_tk.jpg" alt="Персик фото 8">
+                        <img src="images/1848203_457278347.jpg" alt="Персик фото 9">
+                        <img src="images/IMG_20230109_195222.jpg" alt="Персик фото 10">
+                        <img src="images/anketa1.jpg" alt="Персик фото 11">
                     </div>
-                    <div class="form-group">
-                        <label for="message">Сообщение:</label>
-                        <textarea id="message" name="message"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <div class="modal" id="imageModal">
+            <div class="modal__content">
+                <span class="modal__close">&times;</span>
+                <img src="" alt="Увеличенное фото">
+            </div>
+        </div>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Контакты</h2>
+                <div class="contact__content">
+                    <div class="contact__info">
+                        <div class="contact__item">
+                            <h3>Телефон</h3>
+                            <p><a href="tel:+79779597907">+7 (977) 959-79-07</a></p>
+                        </div>
+                        <div class="contact__item">
+                            <h3>Telegram</h3>
+                            <p><a href="https://t.me/maygreed123">@maygreed123</a></p>
+                        </div>
                     </div>
-                    <button type="submit" class="glow-button">Отправить</button>
-                </form>
+                    <div class="contact__message">
+                        <p>Если вы хотите помочь Персику найти новый дом или у вас есть вопросы - свяжитесь с нами любым удобным способом!</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="visitor-counter">
-            <p>Посетителей: 0001337</p>
-        </div>
-        <p>© 2023 Мастер Программирования | Сделано с ❤️ и ностальгией по 90-м</p>
-        <div class="marquee">
-            <marquee scrollamount="2" direction="right">C++ * C# * HTML * CSS * JavaScript * React * Angular * Node.js * SQL * Git</marquee>
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Помощь Персику. Все права защищены.</p>
         </div>
     </footer>
 
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html> 
