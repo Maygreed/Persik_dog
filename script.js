@@ -2,27 +2,42 @@
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
 // Анимация появления элементов при скролле
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
         }
     });
-});
+}, observerOptions);
 
-document.querySelectorAll('.about, .history, .contact').forEach((section) => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'all 0.5s ease-out';
-    observer.observe(section);
+document.querySelectorAll('.about__content, .history__content, .contact__content').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+    observer.observe(el);
 });
 
 // Добавляем класс для анимации
@@ -34,32 +49,43 @@ document.addEventListener('DOMContentLoaded', () => {
 const modal = document.getElementById('imageModal');
 const modalImg = modal.querySelector('img');
 const closeBtn = modal.querySelector('.modal__close');
+const galleryImages = document.querySelectorAll('.history__gallery img');
 
-// Add click event to all gallery images
-document.querySelectorAll('.history__gallery img').forEach(img => {
-    img.addEventListener('click', () => {
+function openModal(imgSrc) {
+    modalImg.src = imgSrc;
+    modal.style.display = 'flex';
+    requestAnimationFrame(() => {
         modal.classList.add('active');
-        modalImg.src = img.src;
-        modalImg.alt = img.alt;
+    });
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        modalImg.src = '';
+        document.body.style.overflow = '';
+    }, 300);
+}
+
+galleryImages.forEach(img => {
+    img.addEventListener('click', () => {
+        openModal(img.src);
     });
 });
 
-// Close modal when clicking close button
-closeBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-});
-
-// Close modal when clicking outside the image
+closeBtn.addEventListener('click', closeModal);
 modal.addEventListener('click', (e) => {
     if (e.target === modal) {
-        modal.classList.remove('active');
+        closeModal();
     }
 });
 
 // Close modal with Escape key
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
-        modal.classList.remove('active');
+        closeModal();
     }
 });
 
@@ -67,9 +93,17 @@ document.addEventListener('keydown', (e) => {
 document.querySelectorAll("a[href^=\"#\"]").forEach(anchor => {
     anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth"
-        });
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
     });
 });
 

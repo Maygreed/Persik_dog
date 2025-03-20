@@ -72,6 +72,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition: background-image 0.5s ease-in-out;
 }
 
 .hero::before {
@@ -88,6 +89,7 @@ body {
     max-width: 800px;
     position: relative;
     z-index: 2;
+    animation: scaleIn 1.2s ease-out;
 }
 
 .hero h1 {
@@ -125,6 +127,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: center;
+    animation: scaleIn 1s ease-out;
 }
 
 .about__image img {
@@ -146,6 +149,8 @@ body {
     margin-bottom: 1rem;
     padding-left: 1.5rem;
     position: relative;
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0;
 }
 
 .about__info li:before {
@@ -154,6 +159,14 @@ body {
     position: absolute;
     left: 0;
 }
+
+.about__info li:nth-child(1) { animation-delay: 0.1s; }
+.about__info li:nth-child(2) { animation-delay: 0.2s; }
+.about__info li:nth-child(3) { animation-delay: 0.3s; }
+.about__info li:nth-child(4) { animation-delay: 0.4s; }
+.about__info li:nth-child(5) { animation-delay: 0.5s; }
+.about__info li:nth-child(6) { animation-delay: 0.6s; }
+.about__info li:nth-child(7) { animation-delay: 0.7s; }
 
 /* History Section */
 .history {
@@ -165,6 +178,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     align-items: start;
+    animation: scaleIn 1s ease-out;
 }
 
 .history__text {
@@ -194,12 +208,13 @@ body {
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
 }
 
 .history__gallery img:hover {
     transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* Contact Section */
@@ -212,6 +227,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     text-align: center;
+    animation: scaleIn 1s ease-out;
 }
 
 .contact__info {
@@ -226,11 +242,12 @@ body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .contact__item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .contact__item h3 {
@@ -303,10 +320,66 @@ body {
     }
 }
 
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Apply animations to sections */
 .about,
 .history,
 .contact {
     animation: fadeIn 1s ease-out;
+}
+
+.about__content,
+.history__content,
+.contact__content {
+    animation: scaleIn 1s ease-out;
+}
+
+.about__info li,
+.nav__list li {
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.about__info li:nth-child(1) { animation-delay: 0.1s; }
+.about__info li:nth-child(2) { animation-delay: 0.2s; }
+.about__info li:nth-child(3) { animation-delay: 0.3s; }
+.about__info li:nth-child(4) { animation-delay: 0.4s; }
+.about__info li:nth-child(5) { animation-delay: 0.5s; }
+.about__info li:nth-child(6) { animation-delay: 0.6s; }
+.about__info li:nth-child(7) { animation-delay: 0.7s; }
+
+.nav__list li:nth-child(1) { animation-delay: 0.1s; }
+.nav__list li:nth-child(2) { animation-delay: 0.2s; }
+.nav__list li:nth-child(3) { animation-delay: 0.3s; }
+
+/* Smooth transitions */
+.nav__list a,
+.btn,
+.history__gallery img,
+.contact__item,
+.modal__close {
+    transition: all 0.3s ease-in-out;
 }
 
 /* Modal styles */
@@ -321,16 +394,26 @@ body {
     z-index: 2000;
     justify-content: center;
     align-items: center;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .modal.active {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
 }
 
 .modal__content {
     max-width: 90%;
     max-height: 90vh;
     position: relative;
+    transition: transform 0.3s ease-in-out;
+    transform: scale(0.9);
+}
+
+.modal.active .modal__content {
+    transform: scale(1);
 }
 
 .modal__content img {
