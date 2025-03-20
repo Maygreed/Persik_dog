@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card">
+    <h2 class="blink">Напишите мне!</h2>
+    <div class="contact-content">
+        <div class="contact-info">
+            <h3>Контактная информация</h3>
+            <ul class="contact-list">
+                <li>
+                    <i class="fas fa-envelope"></i>
+                    <span>email@example.com</span>
+                </li>
+                <li>
+                    <i class="fas fa-phone"></i>
+                    <span>+7 (999) 123-45-67</span>
+                </li>
+                <li>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Москва, Россия</span>
+                </li>
+            </ul>
+            
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-telegram"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <form method="POST" class="animate__animated animate__fadeIn">
+                {{ form.csrf_token }}
+                <div class="form-group">
+                    {{ form.name.label }}
+                    {{ form.name(class="form-control") }}
+                    {% if form.name.errors %}
+                        {% for error in form.name.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.email.label }}
+                    {{ form.email(class="form-control") }}
+                    {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.message.label }}
+                    {{ form.message(class="form-control") }}
+                    {% if form.message.errors %}
+                        {% for error in form.message.errors %}
+                            <span class="error-message">{{ error }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                {{ form.submit(class="glow-button") }}
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="card">
+    <h2>Часто задаваемые вопросы</h2>
+    <div class="faq-container">
+        <div class="faq-item">
+            <h3>Какие проекты вы принимаете?</h3>
+            <p>Я работаю над проектами любой сложности в области C++, C# и веб-разработки.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Сколько времени занимает разработка?</h3>
+            <p>Сроки зависят от сложности проекта и требований заказчика.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Как начать сотрудничество?</h3>
+            <p>Просто заполните форму выше, и я свяжусь с вами в ближайшее время.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        this.classList.add('animate__animated', 'animate__shakeX');
+        setTimeout(() => {
+            this.classList.remove('animate__animated', 'animate__shakeX');
+        }, 1000);
+    });
+
+    const socialLinks = document.querySelectorAll('.social-link');
+    socialLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.2) rotate(360deg)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
+});
+</script>
+{% endblock %} 
